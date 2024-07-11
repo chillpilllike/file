@@ -52,6 +52,98 @@ const plugins = [
       },
     },
   },
+  {
+    resolve: `@rsc-labs/medusa-store-analytics`,
+    options: {
+      enableUI: true,
+    },
+  },
+  {
+    resolve: `medusa-payment-stripe`,
+    options: {
+      api_key: process.env.STRIPE_API_KEY,
+      webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
+    },
+  },
+  {
+    resolve: `medusa-plugin-mailjet`,
+    options: {
+      public_key: process.env.MAILJET_PUBLIC_KEY,
+      private_key: process.env.MAILJET_PRIVATE_KEY,
+      from: 'Medusa hello@medusa.example',
+      template_error_reporting: 'Medusa hello@medusa.example',
+      customer_created_template: '[used on customer.created]',
+      gift_card_created_template: '[used on gift_card.created]',
+      order_placed_template: '[used on order.placed]',
+      order_canceled_template: '[used on order.canceled]',
+      order_shipped_template: '[used on order.shipment_created]',
+      order_completed_template: '[used on order.completed]',
+      user_password_reset_template: '[used on user.password_reset]',
+      customer_password_reset_template: '[used on customer.password_reset]',
+      localization: {
+        'de-DE': {
+          customer_created_template: '[used on customer.created]',
+          gift_card_created_template: '[used on gift_card.created]',
+          order_placed_template: '[used on order.placed]',
+          order_canceled_template: '[used on order.canceled]',
+          order_shipped_template: '[used on order.shipment_created]',
+          order_completed_template: '[used on order.completed]',
+          user_password_reset_template: '[used on user.password_reset]',
+          customer_password_reset_template: '[used on customer.password_reset]',
+        },
+      },
+    },
+  },
+  {
+    resolve: `medusa-plugin-meilisearch`,
+    options: {
+      config: {
+        host: process.env.MEILISEARCH_HOST,
+        apiKey: process.env.MEILISEARCH_API_KEY,
+      },
+      settings: {
+        products: {
+          indexSettings: {
+            searchableAttributes: [
+              "title", 
+              "description",
+              "variant_sku",
+            ],
+            displayedAttributes: [
+              "title", 
+              "description", 
+              "variant_sku", 
+              "thumbnail", 
+              "handle",
+            ],
+          },
+          primaryKey: "id",
+          transformer: (product) => ({
+            id: product.id,
+          }),
+        },
+      },
+    },
+  },
+  {
+    resolve: "medusa-file-r2",
+    options: {
+      account_id: process.env.ACCOUNT_ID,
+      access_key: process.env.ACCESS_KEY,
+      secret_key: process.env.SECRET_KEY,
+      bucket: process.env.R2_BUCKET_NAME,
+      public_url: process.env.R2_BUCKET_PUBLIC_URL,
+    },
+  },
+  {
+    resolve: `medusa-plugin-dashboard`,
+    options: {
+      enableUI: true,
+    },
+  },
+  {
+    resolve: `medusa-plugin-wishlist`,
+  },
 ];
 
 const modules = {
@@ -77,7 +169,7 @@ const projectConfig = {
   database_url: DATABASE_URL,
   admin_cors: ADMIN_CORS,
   // Uncomment the following lines to enable REDIS
-  // redis_url: REDIS_URL
+  redis_url: REDIS_URL
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
