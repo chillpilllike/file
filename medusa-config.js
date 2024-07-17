@@ -135,12 +135,6 @@ const plugins = [
       public_url: process.env.R2_BUCKET_PUBLIC_URL,
     },
   },
-  {
-    resolve: `medusa-plugin-dashboard`,
-    options: {
-      enableUI: true,
-    },
-  },
 ];
 
 const modules = {
