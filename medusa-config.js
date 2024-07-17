@@ -148,7 +148,6 @@ const plugins = [
 
 const modules = {
   // Uncomment and configure the following lines to enable Redis
-  /*
   eventBus: {
     resolve: "@medusajs/event-bus-redis",
     options: {
@@ -161,10 +160,9 @@ const modules = {
       redisUrl: REDIS_URL,
     },
   },
-  */
 };
 
-/** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
+@type {import('@medusajs/medusa').ConfigModule["projectConfig"]}
 const projectConfig = {
   jwt_secret: process.env.JWT_SECRET || "supersecret",
   cookie_secret: process.env.COOKIE_SECRET || "supersecret",
@@ -172,10 +170,10 @@ const projectConfig = {
   database_url: DATABASE_URL,
   admin_cors: ADMIN_CORS,
   // Uncomment the following line to enable Redis
-  // redis_url: REDIS_URL,
+  redis_url: REDIS_URL,
 };
 
-/** @type {import('@medusajs/medusa').ConfigModule} */
+@type {import('@medusajs/medusa').ConfigModule}
 module.exports = {
   projectConfig,
   plugins,
