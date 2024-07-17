@@ -68,35 +68,6 @@ const plugins = [
       webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
     },
   },
-  {
-    resolve: `medusa-plugin-mailjet`,
-    options: {
-      public_key: process.env.MAILJET_PUBLIC_KEY,
-      private_key: process.env.MAILJET_PRIVATE_KEY,
-      from: 'Medusa hello@medusa.example',
-      template_error_reporting: 'Medusa hello@medusa.example',
-      customer_created_template: '[used on customer.created]',
-      gift_card_created_template: '[used on gift_card.created]',
-      order_placed_template: '[used on order.placed]',
-      order_canceled_template: '[used on order.canceled]',
-      order_shipped_template: '[used on order.shipment_created]',
-      order_completed_template: '[used on order.completed]',
-      user_password_reset_template: '[used on user.password_reset]',
-      customer_password_reset_template: '[used on customer.password_reset]',
-      localization: {
-        'de-DE': {
-          customer_created_template: '[used on customer.created]',
-          gift_card_created_template: '[used on gift_card.created]',
-          order_placed_template: '[used on order.placed]',
-          order_canceled_template: '[used on order.canceled]',
-          order_shipped_template: '[used on order.shipment_created]',
-          order_completed_template: '[used on order.completed]',
-          user_password_reset_template: '[used on user.password_reset]',
-          customer_password_reset_template: '[used on customer.password_reset]',
-        },
-      },
-    },
-  },
 ];
 
 const modules = {
