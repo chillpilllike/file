@@ -141,9 +141,6 @@ const plugins = [
       enableUI: true,
     },
   },
-  {
-    resolve: `medusa-plugin-wishlist`,
-  },
 ];
 
 const modules = {
