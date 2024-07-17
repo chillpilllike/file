@@ -96,15 +96,6 @@ const plugins = [
       },
     },
   },
-  {
-    resolve: `medusa-plugin-dashboard`,
-    options: {
-      enableUI: true,
-    },
-  },
-  {
-    resolve: `medusa-plugin-wishlist`,
-  },
 ];
 
 const modules = {
