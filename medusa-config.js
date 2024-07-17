@@ -1,5 +1,8 @@
 const dotenv = require("dotenv");
 
+// Load environment variables from the .env file
+dotenv.config();
+
 let ENV_FILE_NAME = "";
 switch (process.env.NODE_ENV) {
   case "production":
@@ -153,7 +156,7 @@ const modules = {
   },
 };
 
-@type {import('@medusajs/medusa').ConfigModule["projectConfig"]}
+/** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
   jwt_secret: process.env.JWT_SECRET || "supersecret",
   cookie_secret: process.env.COOKIE_SECRET || "supersecret",
@@ -164,7 +167,7 @@ const projectConfig = {
   redis_url: REDIS_URL,
 };
 
-@type {import('@medusajs/medusa').ConfigModule}
+/** @type {import('@medusajs/medusa').ConfigModule} */
 module.exports = {
   projectConfig,
   plugins,
