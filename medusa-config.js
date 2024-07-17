@@ -52,50 +52,6 @@ const plugins = [
       },
     },
   },
-  {
-    resolve: `@rsc-labs/medusa-store-analytics`,
-    options: {
-      enableUI: true,
-    },
-  },
-  {
-    resolve: `medusa-payment-stripe`,
-    options: {
-      api_key: process.env.STRIPE_API_KEY,
-      webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
-    },
-  },
-  {
-    resolve: `medusa-plugin-meilisearch`,
-    options: {
-      config: {
-        host: process.env.MEILISEARCH_HOST,
-        apiKey: process.env.MEILISEARCH_API_KEY,
-      },
-      settings: {
-        products: {
-          indexSettings: {
-            searchableAttributes: [
-              "title", 
-              "description",
-              "variant_sku",
-            ],
-            displayedAttributes: [
-              "title", 
-              "description", 
-              "variant_sku", 
-              "thumbnail", 
-              "handle",
-            ],
-          },
-          primaryKey: "id",
-          transformer: (product) => ({
-            id: product.id,
-          }),
-        },
-      },
-    },
-  },
 ];
 
 const modules = {
@@ -121,7 +77,7 @@ const projectConfig = {
   database_url: DATABASE_URL,
   admin_cors: ADMIN_CORS,
   // Uncomment the following lines to enable REDIS
-  redis_url: REDIS_URL
+  // redis_url: REDIS_URL
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
