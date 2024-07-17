@@ -128,16 +128,6 @@ const plugins = [
       },
     },
   },
-  {
-    resolve: "medusa-file-r2",
-    options: {
-      account_id: process.env.ACCOUNT_ID,
-      access_key: process.env.ACCESS_KEY,
-      secret_key: process.env.SECRET_KEY,
-      bucket: process.env.R2_BUCKET_NAME,
-      public_url: process.env.R2_BUCKET_PUBLIC_URL,
-    },
-  },
 ];
 
 const modules = {
