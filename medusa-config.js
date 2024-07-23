@@ -52,13 +52,19 @@ const plugins = [
       },
     },
   },
-  {
-    resolve: `medusa-file-minio`,
+{
+    resolve: `medusa-file-s3`,
     options: {
-      endpoint: process.env.MINIO_ENDPOINT,
-      bucket: process.env.MINIO_BUCKET,
-      access_key_id: process.env.MINIO_ACCESS_KEY,
-      secret_access_key: process.env.MINIO_SECRET_KEY,
+        s3_url: process.env.S3_URL,
+        bucket: process.env.S3_BUCKET,
+        region: process.env.S3_REGION,
+        access_key_id: process.env.S3_ACCESS_KEY_ID,
+        secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+        cache_control: process.env.S3_CACHE_CONTROL,
+        // optional
+        download_file_duration:
+          process.env.S3_DOWNLOAD_FILE_DURATION,
+        prefix: process.env.S3_PREFIX,
     },
   },
   {
@@ -86,6 +92,21 @@ const plugins = [
             ],
           },
           primaryKey: "id",
+        },
+      },
+    },
+  },
+  {
+    resolve: `medusa-plugin-sendgrid`,
+    options: {
+      api_key: process.env.SENDGRID_API_KEY,
+      from: process.env.SENDGRID_FROM,
+      order_placed_template: 
+        process.env.SENDGRID_ORDER_PLACED_ID,
+      localization: {
+        "de-DE": { // locale key
+          order_placed_template:
+            process.env.SENDGRID_ORDER_PLACED_ID_LOCALIZED,
         },
       },
     },
