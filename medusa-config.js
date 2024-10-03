@@ -52,19 +52,18 @@ const plugins = [
       },
     },
   },
-{
+  {
     resolve: `medusa-file-s3`,
     options: {
-        s3_url: process.env.S3_URL,
-        bucket: process.env.S3_BUCKET,
-        region: process.env.S3_REGION,
-        access_key_id: process.env.S3_ACCESS_KEY_ID,
-        secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
-        cache_control: process.env.S3_CACHE_CONTROL,
-        // optional
-        download_file_duration:
-          process.env.S3_DOWNLOAD_FILE_DURATION,
-        prefix: process.env.S3_PREFIX,
+      s3_url: process.env.S3_URL,
+      bucket: process.env.S3_BUCKET,
+      region: process.env.S3_REGION,
+      access_key_id: process.env.S3_ACCESS_KEY_ID,
+      secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+      cache_control: process.env.S3_CACHE_CONTROL,
+      // optional
+      download_file_duration: process.env.S3_DOWNLOAD_FILE_DURATION,
+      prefix: process.env.S3_PREFIX,
     },
   },
   {
@@ -78,16 +77,16 @@ const plugins = [
         products: {
           indexSettings: {
             searchableAttributes: [
-              "title", 
+              "title",
               "description",
               "variant_sku",
             ],
             displayedAttributes: [
-              "id", 
-              "title", 
-              "description", 
-              "variant_sku", 
-              "thumbnail", 
+              "id",
+              "title",
+              "description",
+              "variant_sku",
+              "thumbnail",
               "handle",
             ],
           },
@@ -101,12 +100,11 @@ const plugins = [
     options: {
       api_key: process.env.SENDGRID_API_KEY,
       from: process.env.SENDGRID_FROM,
-      order_placed_template: 
-        process.env.SENDGRID_ORDER_PLACED_ID,
+      order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID,
       localization: {
-        "de-DE": { // locale key
-          order_placed_template:
-            process.env.SENDGRID_ORDER_PLACED_ID_LOCALIZED,
+        "de-DE": {
+          // locale key
+          order_placed_template: process.env.SENDGRID_ORDER_PLACED_ID_LOCALIZED,
         },
       },
     },
@@ -115,6 +113,13 @@ const plugins = [
     resolve: `medusa-plugin-segment`,
     options: {
       write_key: process.env.SEGMENT_WRITE_KEY,
+    },
+  },
+  {
+    resolve: 'medusa-source-shopify',
+    options: {
+      domain: process.env.SHOPIFY_DOMAIN,
+      password: process.env.SHOPIFY_PASSWORD,
     },
   },
 ];
