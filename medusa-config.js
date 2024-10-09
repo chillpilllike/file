@@ -66,7 +66,7 @@ const plugins = [
       prefix: process.env.S3_PREFIX,
     },
   },
-  {
+{
     resolve: `medusa-plugin-meilisearch`,
     options: {
       config: {
@@ -76,21 +76,26 @@ const plugins = [
       settings: {
         products: {
           indexSettings: {
-            searchableAttributes: [
-              "title",
-              "description",
-              "variant_sku",
-            ],
+            searchableAttributes: ["title", "description", "variant_sku", "brand"],
             displayedAttributes: [
-              "id",
               "title",
               "description",
               "variant_sku",
               "thumbnail",
               "handle",
+              "brand", // Adding Brand to displayed attributes
             ],
           },
           primaryKey: "id",
+          transformer: (product) => ({
+            id: product.id,
+            title: product.title,
+            description: product.description,
+            variant_sku: product.variant_sku,
+            thumbnail: product.thumbnail,
+            handle: product.handle,
+            brand: product.metadata?.brand || "", // Accessing brand from custom metadata
+          }),
         },
       },
     },
