@@ -8,11 +8,11 @@ const STRIPE_API_KEY = process.env.STRIPE_API_KEY;
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
-    redisUrl: process.env.REDIS_URL, // Added redisUrl
     databaseDriverOptions: {
       ssl: false,
     },
     // redisUrl: REDIS_URL,
+    redisUrl: process.env.REDIS_URL, // Added redisUrl
     redisPrefix: process.env.REDIS_PREFIX,
     http: {
       storeCors: process.env.STORE_CORS,
